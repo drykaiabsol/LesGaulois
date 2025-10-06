@@ -32,4 +32,9 @@ public class Romain {
 
 	}
 
+	@Override
+	public String toString() {
+		return "Romain [nom=" + nom + ", force=" + force + "]";
+	}
+
 }
