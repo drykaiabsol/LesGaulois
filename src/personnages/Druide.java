@@ -28,24 +28,27 @@ public class Druide {
 	}
 
 	public void preparerPotion(int quantite, int force) {
-		parler("J'ai concocté " + quantite + " doses de potion magique. Elle a une force de " + force + ".");
-		for (int i = 0; i < quantite; i++) {
-			chaudron.remplir(force);
-		}
 		this.forcePotion = force;
+		chaudron.remplir(quantite);
+		parler("J'ai concocté " + quantite + " doses de potion magique. Elle a une force de " + force + ".");
 	}
 
 	public void boosterGaulois(Gaulois gaulois) {
+		if (!chaudron.resterPotion()) {
+			parler("Désolé " + gaulois.getNom() + ", il n'y a plus de potion !");
+			return;
+		}
+
 		if (gaulois.getNom().equals("Obélix")) {
 			parler("Non, " + gaulois.getNom() + " Non !... Et tu le sais très bien !");
 		} else {
 			parler("Tiens " + gaulois.getNom() + " un peu de potion magique.");
-			gaulois.boirePotion(this);
+			if (chaudron.utiliserPotion()) {
+				gaulois.boirePotion(this);
+			} else {
+				parler("Oups, plus de potion au moment de servir " + gaulois.getNom() + " !");
+			}
 		}
-	}
-
-	public void donnerPotion(Gaulois gaulois) {
-
 	}
 
 	@Override

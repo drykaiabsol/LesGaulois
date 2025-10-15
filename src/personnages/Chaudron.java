@@ -23,9 +23,17 @@ public class Chaudron {
 		return quantitePotion > 0;
 	}
 
+	public boolean utiliserPotion() {
+		if (quantitePotion > 0) {
+			quantitePotion--;
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 	@Override
 	public String toString() {
 		return "Chaudron [quantitePotion=" + quantitePotion + "]";
 	}
-
 }

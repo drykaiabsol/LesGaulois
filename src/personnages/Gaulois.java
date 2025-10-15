@@ -53,4 +53,21 @@ public class Gaulois {
 		effetPotion = druide.getForcePotion();
 	}
 
+	public void sePresenter() {
+		if (village != null && village.getChef() == this) {
+			System.out.println("Le Gaulois " + nom + " : \"Bonjour, je m'appelle " + nom
+					+ ". Je suis le chef du village " + village.getNom() + ".\"");
+		} else if (village != null) {
+			System.out.println("Le Gaulois " + nom + " : \"Bonjour, je m'appelle " + nom + ". J'habite le village "
+					+ village.getNom() + ".\"");
+		} else {
+			System.out.println("Le Gaulois " + nom + " : \"Bonjour, je m'appelle " + nom
+					+ ". Je voyage de villages en villages.\"");
+		}
+	}
+
+	public void setVillage(Village village) {
+		this.village = village;
+	}
+
 }
